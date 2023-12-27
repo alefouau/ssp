@@ -1,0 +1,293 @@
+* {
+    box-sizing: border-box;
+    appearance: none;
+    background: none;
+    border: none;
+    user-select: none;
+}
+html {
+    background-color: black;
+}
+html, body{
+    margin: 0; padding: 0;
+    font-family: sans-serif;
+}
+/*scrollbars*/
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+*::-webkit-scrollbar {
+    width: 12px;
+    background: transparent
+}
+*::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+}
+#bg, #fg, body, html {
+    width: 100%;
+    height: 100%;
+}
+#bg {
+    position: fixed;
+    z-index: -1;
+    object-fit: cover;
+}
+#bg[src=''] {
+    display: none;
+}
+#fg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background: radial-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.5));
+}
+#fg > header {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+#fg > header > * {
+    padding: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.5);
+    border-radius: 0.25rem;
+}
+#fg > header > *:hover {
+    background-color: rgba(255,255,255,0.15);
+}
+#clock {
+    font-size: 64pt;
+    color: rgba(255,255,255,0.5);
+    line-height: 72pt;
+}
+#searchbox {
+    background-color: rgba(0,0,0,0.5);
+    font-size:1rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    width: 480px;
+    max-width: 90vw;
+    backdrop-filter: blur(16px) saturate(200%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+#searchbox::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+#bookmarks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+}
+#bookmarks > * {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    gap: 0.5rem;
+    color: white;
+    text-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+#bookmarks > *:hover {
+    background-color: hsla(var(--accent-color), 100%, 70%, 0.15);
+    border-radius: 0.5rem;
+}
+#bookmarks img {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    background-color: hsl(var(--accent-color), 100%, 70%);
+    box-sizing: content-box;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+#bookmarks .delete {
+    display: none;
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: black;
+    width: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    line-height: 1.5rem;
+}
+#bookmarks > *:hover .delete {
+    display: block;
+}
+dialog {
+    background-color: rgb(17,17,17);
+    padding: 0;
+    border-radius: .5rem;
+    max-width: 480px;
+}
+@media screen and (max-width: 540px) {
+    dialog{max-width: 90vw;}
+}
+dialog::backdrop {
+    background-color: rgba(0,0,0,0.5);
+}
+dialog header h1 {
+    font-size: 14pt;
+    font-weight: normal;
+    margin: 0;
+    padding: 1rem;
+}
+dialog main {
+    max-height: 75vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+dialog footer {
+    padding: 0.5rem;
+    float: right;
+}
+dialog button {
+    padding: 0.5rem;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: hsl(var(--accent-color), 100%, 70%);
+    border-radius: .25rem;
+    font-weight: bold;
+}
+dialog button:hover {
+    background-color: hsla(var(--accent-color), 100%, 70%, 0.15);
+}
+dialog button:disabled {
+    color: hsla(var(--accent-color), 100%, 70%, 0.5);
+}
+dialog ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+dialog ul > * {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+}
+dialog ul > a {
+    color: white;
+}
+dialog ul b {
+    display: inline;
+    padding: 1rem;
+    color: hsl(var(--accent-color), 100%, 70%);
+    text-transform: uppercase;
+    font-size: 12pt;
+    letter-spacing: 1px;
+}
+dialog li > span {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+p, a, span{
+    font-size: 12pt;
+    margin: 0;
+    text-decoration: none;
+    color: white;
+}
+p {
+    color: rgba(255, 255, 255, 0.75);
+}
+dialog input[type="text"], dialog input[type="url"], dialog textarea {
+    padding: 0.5rem;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid gray;
+    color: rgba(255, 255, 255, 0.75);
+}
+dialog input[type="text"]:focus, dialog input[type="url"]:focus, dialog textarea:focus {
+    color: white;
+    border-bottom: 2px solid hsl(var(--accent-color), 100%, 70%);
+    outline: none;
+}
+dialog input[type="range"] {
+    appearance: none;
+    height: 3px;
+    background: hsla(var(--accent-color), 100%, 70%, 0.25);
+    background-image: linear-gradient(hsl(var(--accent-color), 100%, 70%), hsl(var(--accent-color), 100%, 75%));
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    margin: 0.5rem 0;
+}
+dialog input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    background-color: hsl(var(--accent-color), 100%, 70%);
+    border-radius: var(--border-radius);
+    height: 1rem;
+    width: 1rem;
+}
+dialog input[type="checkbox"]{
+    position: relative;
+    appearance: none;
+    width: 2rem;
+    height: 1rem;
+}
+dialog input[type="checkbox"]::before {
+    position: absolute;
+    content: '';
+    background-color: white;
+    opacity: 0.5;
+    inset: 0.125rem;
+    border-radius: 24px;
+}
+dialog input[type="checkbox"]::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    background-color: rgb(197, 197, 197);
+    height: 1rem;
+    width: 1rem;
+    border-radius: 24px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+dialog input[type="checkbox"]:checked::after {
+    background-color: hsl(var(--accent-color), 100%, 70%);
+    left: unset;
+    right: 0;
+}
+dialog section * {
+    padding: 0 1rem;
+}
+dialog section img {
+    padding: 0;
+    width: 100%;
+}
+h1, h2, h3 {
+    margin: 1rem 0;
+    color: white;
+    font-weight:  normal;
+}
+h1 {
+    font-size: 22pt;
+}
+h2 {
+    font-size: 18pt;
+}
+h3 {
+    font-size: 14pt;
+}
+button, a, #b_showwellcome, input[type="checkbox"], input[type="range"]::-webkit-slider-thumb {
+    cursor: pointer;
+}
+dialog#widgets {
+    
+}

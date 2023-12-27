@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--background-->
+    <img id="bg" alt="">
+    <!--main-->
+    <main id="fg">
+        <header>
+            <button id="b_settings" type="button">Settings</button>
+        </header>
+        <div id="clock">00:00:00</div>
+        <form id="f_search">
+            <input id="searchbox" type="search" placeholder="Search something...">
+        </form>
+        <div id="bookmarks">
+            <button id="b_addbookmark" class="bookmark">
+                <img src="new.svg">
+                <a>Add</a>
+            </button>
+        </div>
+    </main>
+    <!--Dialogs-->
+    <dialog id="addbookmark">   
+        <form id="f_addb" method="dialog">
+            <header>
+                <h1>Add bookmark</h1>
+            </header>
+            <main>
+                <ul>   
+                    <li>
+                        <input id="i_bname" type="text" placeholder="Name">
+                    </li>
+                    <li>
+                        <input id="i_burl" type="text" inputmode="url" placeholder="Url">
+                    </li>
+                </ul>
+            </main>
+            <footer>
+                <button type="button" class="close">Close</button>
+                <button type="submit" id="b_addfav" disabled>Add</button>
+            </footer>
+        </form>
+    </dialog>
+    <dialog id="settings">
+        <form method="dialog">
+            <header>
+                <h1>Settings</h1>
+            </header>
+            <main>
+                <ul>
+                    <b>Look and feel</b>
+                    <li>
+                        <span>Accent color</span>
+                        <p>Choose main elements color (buttons, titles, etc)</p>
+                        <input id="i_accentcolor" type="range" min="0" max="360" value='0'>
+                    </li>
+                    <li>
+                        <span>Border radius</span>
+                        <p>Choose how rounded main elements will be</p>
+                        <input id="i_borderradius" type="range" min="0" max="24" value="24">
+                    </li>
+                    <li>
+                        <span>Background image</span>
+                        <p>Images/GIFS less than 2mb is recommended</p>
+                        <input id="i_bg" type="file">
+                    </li>
+                </ul>
+                <ul>
+                    <b>Behavior</b>
+                    <li>
+                        <span>Search provider</span>
+                        <p>Define your preferred search engine</p>
+                        <input id="i_searchprovider" type="url" placeholder="Ex: https://duckduckgo.com/?q=">
+                    </li>
+                </ul>
+                <ul>
+                    <b>About</b>
+                    <li>
+                        <span>Simple Start Page</span>
+                        <p>v0.1 alpha</p>
+                        <p>Made with ❤️ in Brazil </p>
+                        <p>By Alefo</p>
+                    </li>
+                    <li>
+                        <span>Changelog</span>
+                        <p>-First release at Chrome Web Store.</p>
+                    </li>
+                    <li>
+                        <span>Known issues</span>
+                        <p>-The API used in this extension to save the background image is the LocalStorage API. This API has storage limits. To avoid errors, please use images smaller than 5mb. This will be solved in future versions (my plan is migrate from localstorage to indexeddb or other undiscovered API)</p>
+                        <p>[!] If you have issues with this extension, please let me know.</p>
+                    </li>
+                    <a href="https://alefouau.github.io">
+                        <span>Website (only Brazillian Portuguese)</span>
+                        <p>alefouau.github.io</p>
+                    </a>                        
+
+                    <li id="b_showwellcome">
+                        <span>Reopen wellcome screen</span>
+                        <p>Click here to show wellcome dialog again</p>
+                    </li>
+                </ul>
+            </main>
+            <footer>
+                <button type="button" class="close">Close</button>
+            </footer>
+        </form>
+    </dialog>
+    <dialog id="wellcome">
+        <main tabindex="0">
+            <section>   
+                <img src="banner.jpg">
+                <h1>Wellcome to Simple Start Page</h1>
+                <p>A simple new tab page, customizable, without ads, trackers or heavy librarys</p>
+                <p>This extension is in development. There may be strange bugs.</p>
+                <h2>Known issues</h2>
+                <h3>Background doesn't apply</h3>
+                <p>The API used by Simple Start Page (localstorage API) has a storage limit</p>
+                <p>To save an image in localstorage, its necessary to convert the image to base64 string and save it in localstorage, and that doubles the image size</p>
+                <p>In future versions, I'll change the method to save files locally. For now, its recommended to use small images to avoid errors</p>
+                <p>Recommended: jpg, webp less than 2mb. You can still use images png more than 2mb, but it can cause errors.</p>
+                <h3>How do I edit my bookmarks</h3>
+                <p>Now, bookmarks are saved in your bookmarks folder in your browser. You can edit or reorder bookmarks in browser's builtin bookmark manager</p>
+                <p>In future updates, it will be possible to edit bookmarks inside SSP page</p>
+                <h2>Please rate my code!</h2>
+                <p>If you known html css js or are having issues, please contact me at Chrome Web Store or social media </p>
+                <p>My biggest difficulty is organizing the code. In programming, you have many possibillities to do the same thing and I want to do this in the most optimized and readable way</p>
+            </section>
+        </main>
+        <footer>
+            <button type="button" class="close">Close</button>
+        </footer>
+    </dialog>
+</body>
+<script src="script.js"></script>
+</html>
